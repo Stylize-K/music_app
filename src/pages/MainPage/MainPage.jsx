@@ -4,7 +4,7 @@ import style from "./MainPage.module.scss";
 import Track from "../../components/Track/Track";
 import { Input } from "@mui/material";
 
-// Search tracks function
+// Tracks Search function
 const runSearch = (query) => {
   if (!query) {
     return tracksList;
