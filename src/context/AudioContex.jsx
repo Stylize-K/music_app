@@ -25,7 +25,7 @@ const AudioProvider = ({ children }) => {
       setPlaying(false);
     } else {
       audio.play();
-      setPlaying(false);
+      setPlaying(true);
     }
   };
 
