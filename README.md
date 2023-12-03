@@ -1,8 +1,34 @@
-# React + Vite
+# Music App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Small and simple music application
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- HTML
+- CSS (SCSS)
+- JavaScript
+- React
+- Material UI
+
+## Features
+
+- View a collection of audio tracks
+- Listen to the selected audio track
+- Pause/rewind the current audio track
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. Clone the repository to your local machine.
+   ```bash
+   git clone https://github.com/Stylize-K/music_app.git
+   ```
+2. Install the dependencies.
+   ```bash
+   npm install
+   ```
+3. Start the development server.
+   ```bash
+   npm run dev
+   ```
