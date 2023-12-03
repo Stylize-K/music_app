@@ -1,12 +1,14 @@
 import { createContext, useState } from "react";
 import tracksList from "../assets/tracksList";
 
-const audio = new Audio();
+const defaultTrack = tracksList[0];
+
+const audio = new Audio(defaultTrack.src);
 
 export const AudioContex = createContext({});
 
 const AudioProvider = ({ children }) => {
-  const [currentTrack, setCurrentTrack] = useState(tracksList[0]);
+  const [currentTrack, setCurrentTrack] = useState(defaultTrack);
   const [isPlaying, setPlaying] = useState(false);
 
   const handleToggleAudio = (track) => {
@@ -27,7 +29,7 @@ const AudioProvider = ({ children }) => {
     }
   };
 
-  const value = { currentTrack, isPlaying, handleToggleAudio };
+  const value = { audio, currentTrack, isPlaying, handleToggleAudio };
 
   return <AudioContex.Provider value={value}>{children}</AudioContex.Provider>;
 };
