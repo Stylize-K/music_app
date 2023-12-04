@@ -2,12 +2,14 @@
 
 Small and simple music application
 
+![Music_app_screenshot](public/music_app.jpg)
+
 ## Tech Stack
 
 - HTML
 - CSS (SCSS)
 - JavaScript
-- React
+- Vite + React
 - Material UI
 
 ## Features
