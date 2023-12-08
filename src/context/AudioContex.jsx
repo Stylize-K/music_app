@@ -10,6 +10,7 @@ export const AudioContex = createContext({});
 const AudioProvider = ({ children }) => {
   const [currentTrack, setCurrentTrack] = useState(defaultTrack);
   const [isPlaying, setPlaying] = useState(false);
+  const [isMute, setIsMute] = useState(false);
 
   const handleToggleAudio = (track) => {
     if (currentTrack.id !== track.id) {
@@ -29,7 +30,24 @@ const AudioProvider = ({ children }) => {
     }
   };
 
-  const value = { audio, currentTrack, isPlaying, handleToggleAudio };
+  const handleToggleMute = () => {
+    if (!isMute) {
+      audio.muted = true;
+      setIsMute(true);
+    } else {
+      audio.muted = false;
+      setIsMute(false);
+    }
+  };
+
+  const value = {
+    audio,
+    currentTrack,
+    isPlaying,
+    isMute,
+    handleToggleAudio,
+    handleToggleMute,
+  };
 
   return <AudioContex.Provider value={value}>{children}</AudioContex.Provider>;
 };

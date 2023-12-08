@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { AudioContex } from "../../context/AudioContex";
 import style from "./playbar.module.scss";
 import { Slider, IconButton } from "@mui/material";
-import { PlayArrow, Pause } from "@mui/icons-material";
+import { PlayArrow, Pause, VolumeOff, VolumeUp } from "@mui/icons-material";
 import secondsToMMSS from "../../utils/secondsToMMSS";
 
 const TimeControls = () => {
@@ -43,8 +43,13 @@ const TimeControls = () => {
 };
 
 const Playbar = () => {
-  const { currentTrack, isPlaying, handleToggleAudio } =
-    useContext(AudioContex);
+  const {
+    currentTrack,
+    isPlaying,
+    isMute,
+    handleToggleAudio,
+    handleToggleMute,
+  } = useContext(AudioContex);
 
   const { title, artists, preview, duration } = currentTrack;
 
@@ -55,6 +60,9 @@ const Playbar = () => {
       <img className={style.preview} src={preview} alt={title} />
       <IconButton onClick={() => handleToggleAudio(currentTrack)}>
         {isPlaying ? <Pause /> : <PlayArrow />}
+      </IconButton>
+      <IconButton onClick={() => handleToggleMute()}>
+        {isMute ? <VolumeOff /> : <VolumeUp />}
       </IconButton>
       <div className={style.credits}>
         <h4>{title}</h4>
