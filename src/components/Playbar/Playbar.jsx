@@ -42,6 +42,41 @@ const TimeControls = () => {
   );
 };
 
+const VolumeControls = () => {
+  const { audio, handleVolumeOff, handleVolumeOn } = useContext(AudioContex);
+
+  const [currentVolume, setCurrentVolume] = useState(1);
+
+  const sliderCurrentVolume = Math.round(audio.volume * 100);
+  const handleChangeCurrentTime = (_, value) => {
+    const volume = value / 100;
+    setCurrentVolume(volume);
+    audio.volume = volume;
+  };
+
+  useEffect(() => {
+    console.log(currentVolume);
+    if (currentVolume === 0) {
+      handleVolumeOff();
+    } else {
+      handleVolumeOn();
+    }
+  }, [currentVolume]);
+
+  return (
+    <div className={style.volumeslider}>
+      <Slider
+        step={1}
+        min={0}
+        max={100}
+        value={sliderCurrentVolume}
+        onChange={handleChangeCurrentTime}
+      />
+      <p>{`${sliderCurrentVolume}%`}</p>
+    </div>
+  );
+};
+
 const Playbar = () => {
   const {
     currentTrack,
@@ -64,6 +99,7 @@ const Playbar = () => {
       <IconButton onClick={() => handleToggleMute()}>
         {isMute ? <VolumeOff /> : <VolumeUp />}
       </IconButton>
+      <VolumeControls />
       <div className={style.credits}>
         <h4>{title}</h4>
         <p>{artists}</p>

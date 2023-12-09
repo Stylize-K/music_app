@@ -40,6 +40,15 @@ const AudioProvider = ({ children }) => {
     }
   };
 
+  const handleVolumeOff = () => {
+    audio.muted = true;
+    setIsMute(true);
+  };
+
+  const handleVolumeOn = () => {
+    audio.muted = false;
+    setIsMute(false);
+  };
   const value = {
     audio,
     currentTrack,
@@ -47,6 +56,8 @@ const AudioProvider = ({ children }) => {
     isMute,
     handleToggleAudio,
     handleToggleMute,
+    handleVolumeOff,
+    handleVolumeOn,
   };
 
   return <AudioContex.Provider value={value}>{children}</AudioContex.Provider>;
